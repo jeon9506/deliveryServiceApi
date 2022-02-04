@@ -21,12 +21,12 @@ public class Food {
     private String name; // 음식 이름
 
     @Column(name = "price", nullable = false)
-    private Long price; // 음식 가격
+    private int price; // 음식 가격
 
     @ManyToOne
     @JoinColumn(name = "restaurant_id", nullable = false)
     private Restaurant restaurant;
 
     @OneToMany(mappedBy = "food")//mappedBy는 카멜케이스
-    private List<FoodOrderDetails> ordersDetails = new ArrayList<>();
+    private List<OrdersItem> ordersItems = new ArrayList<>();
 }

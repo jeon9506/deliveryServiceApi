@@ -8,8 +8,8 @@ import javax.persistence.*;
 @Getter // get 함수를 일괄적으로 만들어줍니다.
 @NoArgsConstructor // 기본 생성자를 만들어줍니다.
 @Entity // DB 테이블 역할을 합니다.
-@Table(name = "food_order_details")
-public class FoodOrderDetails {
+@Table(name = "orders_item")
+public class OrdersItem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -19,11 +19,11 @@ public class FoodOrderDetails {
     private int quantity; // 주문수량
 
     @Column(name = "price", nullable = false)
-    private Long price; // 주문음식의 가격
+    private int price; // 주문음식의 가격
 
     @ManyToOne
-    @JoinColumn(name = "order_id", nullable = false)
-    private FoodOrderDetails foodorder;
+    @JoinColumn(name = "orders_id", nullable = false)
+    private Orders orders;
 
     @ManyToOne
     @JoinColumn(name = "food_id", nullable = false)

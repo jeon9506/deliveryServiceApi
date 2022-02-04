@@ -1,7 +1,6 @@
 package com.example.basic.deliveryServiceApi.model;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -24,21 +23,22 @@ public class Restaurant {
     private String name; //음식점 이름
 
     @Column(name = "min_order_price", nullable = false)
-    private Long minOrderPrice; // 최소주문가격
+    private int minOrderPrice; // 최소주문가격
 
-    @Column(name = "delivery_free", nullable = false)
-    private Long deliveryFree; // 기본배달비
+    @Column(name = "delivery_fee", nullable = false)
+    private int deliveryFee; // 기본배달비
 
     @OneToMany(mappedBy = "restaurant")
-    private List<FoodOrder> foodOrders = new ArrayList<>();
+    private List<Orders> Orders = new ArrayList<>();
 
-    @Builder // 빌더 패턴
-    public Restaurant(Long id, String name, Long minOrderPrice, Long deliveryFree) {
-        this.id = id;
-        this.name = name;
-        this.minOrderPrice = minOrderPrice;
-        this.deliveryFree = deliveryFree;
-    }
+    @OneToMany(mappedBy = "restaurant")
+    private List<Food> foods = new ArrayList<>();
 
-
+//    @Builder // 빌더 패턴
+//    public Restaurant(Long id, String name, int minOrderPrice, int deliveryFree) {
+//        this.id = id;
+//        this.name = name;
+//        this.minOrderPrice = minOrderPrice;
+//        this.deliveryFree = deliveryFree;
+//    }
 }

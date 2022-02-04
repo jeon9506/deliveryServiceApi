@@ -1,5 +1,7 @@
 package com.example.basic.deliveryServiceApi.integration;
 
+import com.example.basic.deliveryServiceApi.dto.FoodOrderDto;
+import com.example.basic.deliveryServiceApi.dto.FoodOrderRequestDto;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Builder;
@@ -403,55 +405,96 @@ class OrderIntegrationTest {
         assertEquals(40400, orderDto.totalPrice);
     }
 
-    @Getter
-    @Setter
-    @Builder
-    static class OrderRequestDto {
-        private Long restaurantId;
-        private List<FoodOrderRequestDto> foods;
-    }
-
-    @Getter
-    @Setter
-    @Builder
-    static class FoodOrderRequestDto {
-        Long id;
-        int quantity;
-    }
-
-    @Getter
-    @Setter
-    static class OrderDto {
-        private String restaurantName;
-        private List<FoodOrderDto> foods;
-        private int deliveryFee;
-        private int totalPrice;
-    }
-
-    @Getter
-    @Setter
-    static class FoodOrderDto {
-        String name;
-        int quantity;
-        int price;
-    }
-
+    /**
+     * 1. 음식점 등록 및 조회
+     * - 음식점 정보 입력받아 등록
+     * 1. 음식점 이름 (name)
+     * 2. 음식점 이름 (name)
+     * 3. 최소주문 가격 (minOrderPrice)
+     * 4. 기본 배달비 (deliveryFee)
+     */
     @Getter
     @Setter
     @Builder
     static class RestaurantDto {
-        private Long id;
-        private String name;
-        private int minOrderPrice;
-        private int deliveryFee;
+        private Long id;            // 음식점 ID (id)
+        private String name;        // 음식점 이름 (name)
+        private int minOrderPrice;  // 최소주문 가격 (minOrderPrice)
+        private int deliveryFee;   // 기본 배달비 (deliveryFee)
     }
 
+    /**
+     * 2. 음식 등록
+     * - 음식점 ID 및 음식 정보 입력받아 등록
+     * 1. 음식점 ID (restaurantId)
+     * 2. 음식명 (name)
+     * 3. 가격 (price)
+     */
     @Getter
     @Setter
     @Builder
     static class FoodDto {
-        private Long id;
-        private String name;
-        private int price;
+        private Long id;        // 음식점 ID (restaurantId)
+        private String name;    // 음식명 (name)
+        private int price;      // 가격 (price)
     }
+
+    /**
+     * 3. 주문 요청하기
+     * - 주문 요청에 대한 응답으로 다음 정보를 포함시킴
+     * 1. 주문 음식점 이름 (restaurantName)
+     * 2. 주문 음식 정보 (foods)
+     * 3. 배달비 (deliveryFee)
+     * 4. 최종 결제 금액 (totalPrice)
+     */
+    @Getter
+    @Setter
+    static class OrderDto {
+        private String restaurantName;      // 주문 음식점 이름 (restaurantName)
+        private List<FoodOrderDto> foods;   // 주문 음식 정보 (foods)
+        private int deliveryFee;            // 배달비
+        private int totalPrice;             // 주문 음식의 가격
+    }
+
+    /**
+     * - 주문 음식 정보 (foods)
+     * 1. 주문 음식명 (name)
+     * 2. 주문 수량 (quantity)
+     * 3. 주문 음식의 가격 (price)
+     */
+    @Getter
+    @Setter
+    static class FoodOrderDto {
+        private String name;        // 주문 음식명 (name)
+        private int quantity;       // 주문 수량 (quantity)
+        private int price;          // 주문 음식의 가격 (price)
+    }
+
+    /**
+     * 3.주문 요청하기 및 주문 조회
+     * - 주문 요청 시 배달 음식점 및 음식 정보 입력받음
+     * 1. 음식점 ID (restaurantId)
+     * 2. 음식 주문 정보 (foods)
+     */
+    @Getter
+    @Setter
+    @Builder
+    static class OrderRequestDto {
+        private Long restaurantId;                  // 음식점 ID (restaurantId)
+        private List<FoodOrderRequestDto> foods;    // 음식 주문 정보 (foods)
+    }
+
+    /**
+     * - 음식 주문 정보 (foods)
+     * 1. 음식 ID (id)
+     * 2. 음식을 주문할 수량 (quantity)
+     */
+    @Getter
+    @Setter
+    @Builder
+    static class FoodOrderRequestDto {
+        Long id;            // 음식 ID (id)
+        int quantity;       // 음식을 주문할 수량 (quantity)
+    }
+
 }
