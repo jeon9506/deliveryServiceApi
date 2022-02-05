@@ -1,5 +1,7 @@
 package com.example.basic.deliveryServiceApi.dto;
 
+import com.example.basic.deliveryServiceApi.model.Food;
+import com.example.basic.deliveryServiceApi.model.Restaurant;
 import lombok.*;
 
 /**
@@ -11,8 +13,19 @@ import lombok.*;
  */
 @Getter
 @Setter
+@Builder
 public class FoodDto {
-    private Long id;        // 음식점 ID (restaurantId)
-    private String name;    // 음식명 (name)
-    private int price;      // 가격 (price)
+    private Long restaurantId;      // 음식점 ID (restaurantId)
+    private Long id;                // 음식 ID (id)
+    private String name;            // 음식명 (name)
+    private int price;              // 가격 (price)
+
+    public Food toEntity(Restaurant restaurant) {
+        return Food.builder()
+                .id(this.id)
+                .name(this.name)
+                .price(this.price)
+                .restaurant(restaurant)
+                .build();
+    }
 }

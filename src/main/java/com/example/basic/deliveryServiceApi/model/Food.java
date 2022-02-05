@@ -1,5 +1,9 @@
 package com.example.basic.deliveryServiceApi.model;
 
+import com.example.basic.deliveryServiceApi.dto.FoodDto;
+import com.example.basic.deliveryServiceApi.dto.RestaurantDto;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -8,6 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Getter // get 함수를 일괄적으로 만들어줍니다.
+@Builder
+@AllArgsConstructor
 @NoArgsConstructor // 기본 생성자를 만들어줍니다.
 @Entity // DB 테이블 역할을 합니다.
 @Table(name = "food")
@@ -29,4 +35,12 @@ public class Food {
 
     @OneToMany(mappedBy = "food")//mappedBy는 카멜케이스
     private List<OrdersItem> ordersItems = new ArrayList<>();
+
+    public FoodDto toDto() {
+        return FoodDto.builder()
+                .id(this.id)
+                .name(this.name)
+                .price(this.price)
+                .build();
+    }
 }
