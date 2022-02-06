@@ -1,6 +1,5 @@
 package com.example.basic.deliveryServiceApi.controller;
 
-import com.example.basic.deliveryServiceApi.dto.RestaurantDto;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 

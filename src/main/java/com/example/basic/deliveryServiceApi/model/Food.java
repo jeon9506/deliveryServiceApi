@@ -1,7 +1,7 @@
 package com.example.basic.deliveryServiceApi.model;
 
-import com.example.basic.deliveryServiceApi.dto.FoodDto;
-import com.example.basic.deliveryServiceApi.dto.RestaurantDto;
+import com.example.basic.deliveryServiceApi.dto.request.FoodRequestDto;
+import com.example.basic.deliveryServiceApi.dto.response.FoodResponseDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -36,8 +36,15 @@ public class Food {
     @OneToMany(mappedBy = "food")//mappedBy는 카멜케이스
     private List<OrdersItem> ordersItems = new ArrayList<>();
 
-    public FoodDto toDto() {
-        return FoodDto.builder()
+//    public FoodRequestDto foodRequestDto() {
+//        return FoodRequestDto.builder()
+//                .name(this.name)
+//                .price(this.price)
+//                .build();
+//    }
+
+    public FoodResponseDto toFoodResponseDto() {
+        return FoodResponseDto.builder()
                 .id(this.id)
                 .name(this.name)
                 .price(this.price)

@@ -1,6 +1,7 @@
 package com.example.basic.deliveryServiceApi.model;
 
-import com.example.basic.deliveryServiceApi.dto.RestaurantDto;
+import com.example.basic.deliveryServiceApi.dto.request.RestaurantRequestDto;
+import com.example.basic.deliveryServiceApi.dto.response.RestaurantResponseDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -37,8 +38,16 @@ public class Restaurant {
     @OneToMany(mappedBy = "restaurant")
     private List<Food> foods = new ArrayList<>();
 
-    public RestaurantDto toDto() {
-        return RestaurantDto.builder()
+//    public RestaurantRequestDto toRestaurantRequestDto() {
+//        return RestaurantRequestDto.builder()
+//                .name(this.name)
+//                .minOrderPrice(this.minOrderPrice)
+//                .deliveryFee(this.deliveryFee)
+//                .build();
+//    }
+
+    public RestaurantResponseDto toRestaurantResponseDto() {
+        return RestaurantResponseDto.builder()
                 .id(this.id)
                 .name(this.name)
                 .minOrderPrice(this.minOrderPrice)

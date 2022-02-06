@@ -1,6 +1,7 @@
 package com.example.basic.deliveryServiceApi.controller.restcontroller;
 
-import com.example.basic.deliveryServiceApi.dto.RestaurantDto;
+import com.example.basic.deliveryServiceApi.dto.request.RestaurantRequestDto;
+import com.example.basic.deliveryServiceApi.dto.response.RestaurantResponseDto;
 import com.example.basic.deliveryServiceApi.service.RestaurantService;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
@@ -19,13 +20,13 @@ public class RestaurantRestController {
 
     @PostMapping("/restaurant/register")
     @ApiOperation(value = "음식점 등록", notes = "음식점을 등록한다.")
-    public RestaurantDto createRestaurant(@RequestBody RestaurantDto requestDto) {
+    public RestaurantResponseDto createRestaurant(@RequestBody RestaurantRequestDto requestDto) {
         return restaurantService.addRestaurant(requestDto);
     }
 
     @GetMapping("/restaurants")
     @ApiOperation(value = "음식점 조회", notes = "음식점 전체를 조회한다.")
-    public List<RestaurantDto> findRestaurantList() {
+    public List<RestaurantResponseDto> findRestaurantList() {
         return restaurantService.findRestaurantList();
     }
 }

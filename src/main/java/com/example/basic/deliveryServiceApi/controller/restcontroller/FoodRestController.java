@@ -1,6 +1,7 @@
 package com.example.basic.deliveryServiceApi.controller.restcontroller;
 
-import com.example.basic.deliveryServiceApi.dto.FoodDto;
+import com.example.basic.deliveryServiceApi.dto.request.FoodRequestDto;
+import com.example.basic.deliveryServiceApi.dto.response.FoodResponseDto;
 import com.example.basic.deliveryServiceApi.service.FoodService;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
@@ -19,7 +20,7 @@ public class FoodRestController {
     @PostMapping("/restaurant/{restaurantId}/food/register")
     @ApiOperation(value = "음식 등록", notes = "해당 음식적의 음식 여러개 등록")
     @ApiImplicitParam(name = "restaurantId", value = "음식점 아이디", paramType = "path")
-    public ResponseEntity addFoodList(@PathVariable Long restaurantId, @RequestBody List<FoodDto> requestDtoList) {
+    public ResponseEntity<Object> addFoodList(@PathVariable Long restaurantId, @RequestBody List<FoodRequestDto> requestDtoList) {
 
         foodService.addFoodList(requestDtoList, restaurantId);
 
@@ -29,7 +30,7 @@ public class FoodRestController {
     @GetMapping("/restaurant/{restaurantId}/foods")
     @ApiOperation(value = "음식 조회", notes = "해당 음식점의 모든 음식 조회")
     @ApiImplicitParam(name = "restaurantId", value = "음식점 아이디", paramType = "path")
-    public List<FoodDto> findRestaurantFoodList(@PathVariable Long restaurantId) {
+    public List<FoodResponseDto> findRestaurantFoodList(@PathVariable Long restaurantId) {
         return foodService.findRestaurantFoodList(restaurantId);
     }
 }

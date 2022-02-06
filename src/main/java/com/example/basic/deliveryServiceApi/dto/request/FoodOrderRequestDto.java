@@ -1,5 +1,6 @@
-package com.example.basic.deliveryServiceApi.dto;
+package com.example.basic.deliveryServiceApi.dto.request;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,6 +11,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
+@Builder
 public class FoodOrderRequestDto {
     private Long id;        // 음식 ID (id)
     private int quantity;   // 음식을 주문할 수량 (quantity)
