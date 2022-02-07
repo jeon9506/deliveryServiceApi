@@ -13,7 +13,6 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-@AllArgsConstructor
 @Builder
 public class FoodResponseDto {
     private Long id;                // 음식 ID (id)

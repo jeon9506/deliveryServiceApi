@@ -10,7 +10,6 @@ import lombok.*;
  */
 @Getter
 @Setter
-@Builder
 public class FoodOrderResponseDto {
     private String name;        // 주문 음식명 (name)
     private int quantity;       // 주문 수량 (quantity)
