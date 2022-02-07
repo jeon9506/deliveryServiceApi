@@ -1,6 +1,7 @@
 package com.example.basic.deliveryServiceApi.controller.restcontroller;
 
 import com.example.basic.deliveryServiceApi.dto.request.OrderRequestDto;
+import com.example.basic.deliveryServiceApi.dto.response.OrderResponseDto;
 import com.example.basic.deliveryServiceApi.service.OrderService;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
@@ -16,9 +17,8 @@ public class OrderRestController {
 
     @PostMapping("/order/request")
     @ApiOperation(value = "주문 요청하기", notes = "주문 요청 시 배달 음식점 및 음식 정보 입력받는다.")
-    public void addOrders(@RequestBody OrderRequestDto orderRequestDto) {
-        orderService.addOrders(orderRequestDto);
-//        return ;
+    public OrderResponseDto addOrders(@RequestBody OrderRequestDto orderRequestDto) {
+        return orderService.addOrders(orderRequestDto);
 //        return ResponseEntity.ok().body(null);
     }
 

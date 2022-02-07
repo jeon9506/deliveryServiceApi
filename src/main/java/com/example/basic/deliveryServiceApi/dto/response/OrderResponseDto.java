@@ -19,11 +19,11 @@ import java.util.List;
 @Setter
 public class OrderResponseDto {
     private String restaurantName;      // 주문 음식점 이름 (restaurantName)
-    private List<FoodOrderRequestDto> foods;   // 주문 음식 정보 (foods)
+    private List<FoodResponseDto> foods;   // 주문 음식 정보 (foods)
     private int deliveryFee;            // 배달비
     private int totalPrice;             // 주문 음식의 가격
 
-    public OrderResponseDto(Orders orders, List<FoodOrderRequestDto> foods, int deliveryFee) {
+    public OrderResponseDto(Orders orders, List<FoodResponseDto> foods, int deliveryFee) {
         this.restaurantName = orders.getRestaurant().getName();
         this.foods = foods;
         this.deliveryFee = deliveryFee;

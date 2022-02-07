@@ -1,5 +1,6 @@
 package com.example.basic.deliveryServiceApi.model;
 
+import com.example.basic.deliveryServiceApi.dto.response.FoodResponseDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -32,6 +33,13 @@ public class OrdersItem {
     @ManyToOne
     @JoinColumn(name = "food_id", nullable = false)
     private Food food;
+
+    public FoodResponseDto toDto() {
+        return FoodResponseDto.builder()
+                .id(food.getId())
+                .name(food.getName())
+                .build();
+    }
 
 //    @Builder
 //    public OrdersItem(int quantity, int price, Food food){

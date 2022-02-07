@@ -170,17 +170,17 @@ class OrderIntegrationTest {
         Long restaurantId = registeredRestaurant.id;
 
         FoodOrderRequestDto foodOrderRequest1 = FoodOrderRequestDto.builder()
-                .id(food1.id)
+                .id(food1.id) //10900원
                 .quantity(1)
                 .build();
 
         FoodOrderRequestDto foodOrderRequest2 = FoodOrderRequestDto.builder()
-                .id(food2.id)
+                .id(food2.id) //4900원 * 2 = 9800원
                 .quantity(2)
                 .build();
 
         FoodOrderRequestDto foodOrderRequest3 = FoodOrderRequestDto.builder()
-                .id(food3.id)
+                .id(food3.id) //5900원 * 3 = 17700원
                 .quantity(3)
                 .build();
 
