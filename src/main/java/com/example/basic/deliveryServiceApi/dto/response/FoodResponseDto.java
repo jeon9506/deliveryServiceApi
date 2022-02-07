@@ -1,5 +1,6 @@
 package com.example.basic.deliveryServiceApi.dto.response;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,6 +13,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
+@AllArgsConstructor
 @Builder
 public class FoodResponseDto {
     private Long id;                // 음식 ID (id)

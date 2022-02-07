@@ -2,7 +2,6 @@ package com.example.basic.deliveryServiceApi.service;
 
 import com.example.basic.deliveryServiceApi.dto.request.FoodOrderRequestDto;
 import com.example.basic.deliveryServiceApi.dto.request.OrderRequestDto;
-import com.example.basic.deliveryServiceApi.dto.response.FoodOrderResponseDto;
 import com.example.basic.deliveryServiceApi.dto.response.FoodResponseDto;
 import com.example.basic.deliveryServiceApi.dto.response.OrderResponseDto;
 import com.example.basic.deliveryServiceApi.model.Food;
@@ -19,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -100,10 +100,30 @@ public class OrderService {
 
     // 주문 조회
     public List<OrderResponseDto> findOrdersList() {
-        List<OrderResponseDto> orderResponseDtos = new ArrayList<>();
+        List<OrderResponseDto> orderResponseDtoList = new ArrayList<>();
 
-        // 내일하자!!!
+        // 주문내역
+        List<Orders> ordersList = orderRepository.findAll();
 
-        return orderResponseDtos;
+        // 주문상세내역
+        for (Orders orders : ordersList) {
+            Optional<Restaurant> restaurant = restaurantRepository.findById(orders.getRestaurant().getId());
+
+            // 주문한 품목
+            List<OrdersItem> ordersItemList = orderItemRepository.findOrdersItemByOrders(orders);
+            List<FoodResponseDto> foodResponseDtoList = new ArrayList<>();// foodDto 담을 그릇
+            for (OrdersItem ordersItem : ordersItemList) {
+                FoodResponseDto foodResponseDto = FoodResponseDto.builder()
+                        .id(ordersItem.getId())
+                        .name(ordersItem.getFood().getName())
+                        .price(ordersItem.getPrice())
+                        .build();
+                foodResponseDtoList.add(foodResponseDto);
+            }
+            OrderResponseDto orderResponseDto = new OrderResponseDto(orders, foodResponseDtoList, restaurant.get().getDeliveryFee());
+            orderResponseDtoList.add(orderResponseDto);
+        }
+
+        return orderResponseDtoList;
     }
 }

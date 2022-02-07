@@ -1,6 +1,5 @@
 package com.example.basic.deliveryServiceApi.dto.response;
 
-import com.example.basic.deliveryServiceApi.dto.request.FoodOrderRequestDto;
 import com.example.basic.deliveryServiceApi.model.Orders;
 import lombok.Getter;
 import lombok.Setter;
@@ -18,10 +17,10 @@ import java.util.List;
 @Getter
 @Setter
 public class OrderResponseDto {
-    private String restaurantName;      // 주문 음식점 이름 (restaurantName)
+    private String restaurantName;          // 주문 음식점 이름 (restaurantName)
     private List<FoodResponseDto> foods;   // 주문 음식 정보 (foods)
-    private int deliveryFee;            // 배달비
-    private int totalPrice;             // 주문 음식의 가격
+    private int deliveryFee;                // 배달비
+    private int totalPrice;                 // 주문 음식의 가격
 
     public OrderResponseDto(Orders orders, List<FoodResponseDto> foods, int deliveryFee) {
         this.restaurantName = orders.getRestaurant().getName();
