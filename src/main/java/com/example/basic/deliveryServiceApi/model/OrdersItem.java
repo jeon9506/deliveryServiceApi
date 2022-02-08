@@ -1,10 +1,7 @@
 package com.example.basic.deliveryServiceApi.model;
 
 import com.example.basic.deliveryServiceApi.dto.response.FoodResponseDto;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -18,7 +15,7 @@ public class OrdersItem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id; //음식점_ID
+    private Long id; //주문상세_ID
 
     @Column(name = "quantity", nullable = false)
     private int quantity; // 주문수량

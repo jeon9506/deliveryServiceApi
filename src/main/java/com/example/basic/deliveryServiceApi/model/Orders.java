@@ -1,5 +1,6 @@
 package com.example.basic.deliveryServiceApi.model;
 
+import com.example.basic.deliveryServiceApi.dto.response.FoodResponseDto;
 import lombok.*;
 
 import javax.persistence.*;
@@ -9,7 +10,7 @@ import java.util.List;
 @Getter // get 함수를 일괄적으로 만들어줍니다.
 @Builder
 @AllArgsConstructor
-@NoArgsConstructor // 기본 생성자를 만들어줍니다.
+@NoArgsConstructor
 @Entity // DB 테이블 역할을 합니다.
 @Table(name = "orders")
 public class Orders {
