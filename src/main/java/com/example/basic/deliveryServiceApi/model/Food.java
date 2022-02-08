@@ -29,7 +29,7 @@ public class Food {
     @Column(name = "price", nullable = false)
     private int price; // 음식 가격
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "restaurant_id", nullable = false)
     private Restaurant restaurant;
 

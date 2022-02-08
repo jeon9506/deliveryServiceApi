@@ -26,11 +26,11 @@ public class OrdersItem {
     @Column(name = "price", nullable = false)
     private int price; // 주문음식의 가격
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "orders_id", nullable = false)
     private Orders orders;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "food_id", nullable = false)
     private Food food;
 

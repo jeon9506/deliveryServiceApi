@@ -25,7 +25,7 @@ public class Orders {
     @Column(name = "total_price", nullable = false)
     private int totalPrice; // 주문음식의 총 가격(total_price)
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "restaurant_id", nullable = false)
     private Restaurant restaurant; // 음식적 ID(restaurant_id)
 
