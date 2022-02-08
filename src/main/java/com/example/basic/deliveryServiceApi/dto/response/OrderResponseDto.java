@@ -22,10 +22,10 @@ public class OrderResponseDto {
     private int deliveryFee;                // 배달비
     private int totalPrice;                 // 주문 음식의 가격
 
-    public OrderResponseDto(Orders orders, List<FoodResponseDto> foods, int deliveryFee) {
+    public OrderResponseDto(Orders orders, List<FoodResponseDto> foods) {
         this.restaurantName = orders.getRestaurant().getName();
         this.foods = foods;
-        this.deliveryFee = deliveryFee;
+        this.deliveryFee = orders.getRestaurant().getDeliveryFee();
         this.totalPrice = orders.getTotalPrice();
     }
 }

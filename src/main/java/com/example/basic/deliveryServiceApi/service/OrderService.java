@@ -93,7 +93,7 @@ public class OrderService {
             orderItemRepository.save(tempOrders);
         }
 
-        OrderResponseDto orderResponseDto = new OrderResponseDto(orders, foodResponseDtos, restaurant.getDeliveryFee());
+        OrderResponseDto orderResponseDto = new OrderResponseDto(orders, foodResponseDtos);
 
         return orderResponseDto;
     }
@@ -120,7 +120,7 @@ public class OrderService {
                 foodResponseDtoList.add(foodResponseDto);
             }
 
-            OrderResponseDto orderResponseDto = new OrderResponseDto(orders, foodResponseDtoList, orders.getRestaurant().getDeliveryFee());
+            OrderResponseDto orderResponseDto = new OrderResponseDto(orders, foodResponseDtoList);
             orderResponseDtoList.add(orderResponseDto);
         }
 
