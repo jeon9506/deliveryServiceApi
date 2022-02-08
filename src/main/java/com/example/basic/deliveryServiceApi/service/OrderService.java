@@ -107,8 +107,7 @@ public class OrderService {
 
         // 주문상세내역
         for (Orders orders : ordersList) {
-            Optional<Restaurant> restaurant = restaurantRepository.findById(orders.getRestaurant().getId());
-
+//            Optional<Restaurant> restaurant = restaurantRepository.findById(orders.getRestaurant().getId());
             // 주문한 품목
             List<OrdersItem> ordersItemList = orderItemRepository.findOrdersItemByOrders(orders);
             List<FoodResponseDto> foodResponseDtoList = new ArrayList<>();// foodDto 담을 그릇
@@ -120,7 +119,8 @@ public class OrderService {
                         .build();
                 foodResponseDtoList.add(foodResponseDto);
             }
-            OrderResponseDto orderResponseDto = new OrderResponseDto(orders, foodResponseDtoList, restaurant.get().getDeliveryFee());
+
+            OrderResponseDto orderResponseDto = new OrderResponseDto(orders, foodResponseDtoList, orders.getRestaurant().getDeliveryFee());
             orderResponseDtoList.add(orderResponseDto);
         }
 

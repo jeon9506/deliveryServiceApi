@@ -29,6 +29,6 @@ public class Orders {
     @JoinColumn(name = "restaurant_id", nullable = false)
     private Restaurant restaurant; // 음식적 ID(restaurant_id)
 
-    @OneToMany(mappedBy = "orders")//mappedBy는 카멜케이스
+    @OneToMany(mappedBy = "orders", cascade = CascadeType.ALL)// orders를 생성할떄 자동으로 ordersItems를 생성한다.
     private List<OrdersItem> ordersItems = new ArrayList<>();
 }
