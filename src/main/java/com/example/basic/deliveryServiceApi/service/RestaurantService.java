@@ -32,7 +32,7 @@ public class RestaurantService {
             throw new IllegalArgumentException("100원 단위로 입력하지 않았습니다.");
         }
 
-        if (0 > deliveryFee || deliveryFee > 10_000) {
+        if (0 > deliveryFee || deliveryFee > 10000) {
             throw new IllegalArgumentException("기본 배달비 허용값을 벗어났습니다.");
         }
 

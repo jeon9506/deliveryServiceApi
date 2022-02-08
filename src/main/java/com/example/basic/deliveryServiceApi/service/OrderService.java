@@ -80,7 +80,6 @@ public class OrderService {
 
         // Orders 주문 마스터 생성!!!
         orderRepository.save(orders);
-
         for (OrdersItem ordersItem : ordersItems) {
             OrdersItem tempOrders = OrdersItem.builder()
                     .orders(orders)

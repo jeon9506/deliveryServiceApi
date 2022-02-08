@@ -34,7 +34,7 @@ public class FoodService {
                 throw new IllegalArgumentException("음식 가격이 100원 미만입니다.");
             }
 
-            if (price > 1_000_000) {
+            if (price > 1000000) {
                 throw new IllegalArgumentException("음식 가격이 1,000,000원을 초과했습니다.");
             }
 
